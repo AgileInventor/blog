@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Blog.Models.AgileInventorPost>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PostTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.URLImagen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.URLGitHub)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AgileInventorCategory.CategoryName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.URLImagen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.URLGitHub)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgileInventorCategory.CategoryName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PostID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PostID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PostID })
+        </td>
+    </tr>
+}
+
+</table>

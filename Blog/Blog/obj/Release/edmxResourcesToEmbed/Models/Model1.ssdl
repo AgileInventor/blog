@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_9D8B6E_PAGINASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AgileInventorCategory">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AgileInventorPost">
+    <Key>
+      <PropertyRef Name="PostID" />
+    </Key>
+    <Property Name="PostID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostTitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PostContent" Type="ntext" Nullable="false" />
+    <Property Name="PostDate" Type="datetime" Nullable="false" />
+    <Property Name="PostStatus" Type="bit" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="URLImagen" Type="nvarchar(max)" />
+    <Property Name="URLGitHub" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_AgileInventorPost_AgileInventorCategory">
+    <End Role="AgileInventorCategory" Type="Self.AgileInventorCategory" Multiplicity="1" />
+    <End Role="AgileInventorPost" Type="Self.AgileInventorPost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AgileInventorCategory">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="AgileInventorPost">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_9D8B6E_PAGINASModelStoreContainer">
+    <EntitySet Name="AgileInventorCategory" EntityType="Self.AgileInventorCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AgileInventorPost" EntityType="Self.AgileInventorPost" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AgileInventorPost_AgileInventorCategory" Association="Self.FK_AgileInventorPost_AgileInventorCategory">
+      <End Role="AgileInventorCategory" EntitySet="AgileInventorCategory" />
+      <End Role="AgileInventorPost" EntitySet="AgileInventorPost" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_9D8B6E_PAGINASModelStoreContainer" CdmEntityContainer="DB_9D8B6E_PAGINASEntities">
+    <EntitySetMapping Name="AgileInventorCategory">
+      <EntityTypeMapping TypeName="DB_9D8B6E_PAGINASModel.AgileInventorCategory">
+        <MappingFragment StoreEntitySet="AgileInventorCategory">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AgileInventorPost">
+      <EntityTypeMapping TypeName="DB_9D8B6E_PAGINASModel.AgileInventorPost">
+        <MappingFragment StoreEntitySet="AgileInventorPost">
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
+          <ScalarProperty Name="PostContent" ColumnName="PostContent" />
+          <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+          <ScalarProperty Name="PostStatus" ColumnName="PostStatus" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="URLImagen" ColumnName="URLImagen" />
+          <ScalarProperty Name="URLGitHub" ColumnName="URLGitHub" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,15 @@
+﻿@model Blog.Models.AgileInventorPost
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="row">
+    <div class="col-md-9">
+        <h2>@Html.DisplayFor(model => model.PostTitle)</h2>
+        <p><img src="@Model.URLImagen" class="img-responsive img-thumbnail" /></p>
+        <p><strong>@Html.DisplayFor(model => model.URLGitHub)</strong> </p>
+        <p>
+            @Html.Raw(Model.PostContent)
+        </p>
+    </div>
+</div>    

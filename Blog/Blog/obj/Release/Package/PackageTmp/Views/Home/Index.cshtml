@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Blog.Models.AgileInventorPost>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <h3>@Html.DisplayFor(modelItem => item.PostTitle)</h3>
+                    <p><img src="@item.URLImagen" class="img-responsive img-thumbnail" /></p>
+                    <p>
+                        @Html.DisplayFor(modelItem => item.PostContent)
+                    </p>
+                    <p>@Html.ActionLink("Details", "Details", new { id = item.PostID }, new { @class = "btn btn-default" })</p>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
+
+

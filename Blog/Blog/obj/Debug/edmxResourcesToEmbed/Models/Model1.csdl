@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_9D8B6E_PAGINASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AgileInventorCategory">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AgileInventorPost" Relationship="Self.FK_AgileInventorPost_AgileInventorCategory" FromRole="AgileInventorCategory" ToRole="AgileInventorPost" />
+  </EntityType>
+  <EntityType Name="AgileInventorPost">
+    <Key>
+      <PropertyRef Name="PostID" />
+    </Key>
+    <Property Name="PostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PostContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PostDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PostStatus" Type="Boolean" Nullable="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="URLImagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="URLGitHub" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AgileInventorCategory" Relationship="Self.FK_AgileInventorPost_AgileInventorCategory" FromRole="AgileInventorPost" ToRole="AgileInventorCategory" />
+  </EntityType>
+  <Association Name="FK_AgileInventorPost_AgileInventorCategory">
+    <End Role="AgileInventorCategory" Type="Self.AgileInventorCategory" Multiplicity="1" />
+    <End Role="AgileInventorPost" Type="Self.AgileInventorPost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AgileInventorCategory">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="AgileInventorPost">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_9D8B6E_PAGINASEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AgileInventorCategory" EntityType="Self.AgileInventorCategory" />
+    <EntitySet Name="AgileInventorPost" EntityType="Self.AgileInventorPost" />
+    <AssociationSet Name="FK_AgileInventorPost_AgileInventorCategory" Association="Self.FK_AgileInventorPost_AgileInventorCategory">
+      <End Role="AgileInventorCategory" EntitySet="AgileInventorCategory" />
+      <End Role="AgileInventorPost" EntitySet="AgileInventorPost" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Blog.Models.ImagesViewModel>
+@{
+    ViewBag.Title = "Create";
+    Layout = "";
+}
+@foreach (var image in Model)
+{
+    <a href="#" class="returnImage" data-url="@Request.Url.GetLeftPart(UriPartial.Authority)@image.Url">
+        <img src="@image.Url" alt="Hejsan" id="#image" data-source="@image.Url" width="200" height="200" />
+    </a>
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".returnImage").click(function () {
+            var urlImage = $(this).attr("data-url");
+            //This takes the data value and id of the editor and sends the data(i.e.,image url) back to the caller page
+            window.opener.updateValue("cke_117_textInput", urlImage);
+            window.close();
+        });
+    });
+</script>
+
+
+
+@section Scripts {
+
+
+}
+

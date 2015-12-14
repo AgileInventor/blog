@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_9D8B6E_PAGINASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AgileInventorCategory">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AgileInventorPost">
+          <Key>
+            <PropertyRef Name="PostID" />
+          </Key>
+          <Property Name="PostID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostTitle" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PostContent" Type="ntext" Nullable="false" />
+          <Property Name="PostDate" Type="datetime" Nullable="false" />
+          <Property Name="PostStatus" Type="bit" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="URLImagen" Type="nvarchar(max)" />
+          <Property Name="URLGitHub" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_AgileInventorPost_AgileInventorCategory">
+          <End Role="AgileInventorCategory" Type="Self.AgileInventorCategory" Multiplicity="1" />
+          <End Role="AgileInventorPost" Type="Self.AgileInventorPost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgileInventorCategory">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="AgileInventorPost">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_9D8B6E_PAGINASModelStoreContainer">
+          <EntitySet Name="AgileInventorCategory" EntityType="Self.AgileInventorCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AgileInventorPost" EntityType="Self.AgileInventorPost" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AgileInventorPost_AgileInventorCategory" Association="Self.FK_AgileInventorPost_AgileInventorCategory">
+            <End Role="AgileInventorCategory" EntitySet="AgileInventorCategory" />
+            <End Role="AgileInventorPost" EntitySet="AgileInventorPost" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_9D8B6E_PAGINASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AgileInventorCategory">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AgileInventorPost" Relationship="Self.FK_AgileInventorPost_AgileInventorCategory" FromRole="AgileInventorCategory" ToRole="AgileInventorPost" />
+        </EntityType>
+        <EntityType Name="AgileInventorPost">
+          <Key>
+            <PropertyRef Name="PostID" />
+          </Key>
+          <Property Name="PostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PostStatus" Type="Boolean" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="URLImagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="URLGitHub" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AgileInventorCategory" Relationship="Self.FK_AgileInventorPost_AgileInventorCategory" FromRole="AgileInventorPost" ToRole="AgileInventorCategory" />
+        </EntityType>
+        <Association Name="FK_AgileInventorPost_AgileInventorCategory">
+          <End Role="AgileInventorCategory" Type="Self.AgileInventorCategory" Multiplicity="1" />
+          <End Role="AgileInventorPost" Type="Self.AgileInventorPost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgileInventorCategory">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="AgileInventorPost">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_9D8B6E_PAGINASEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AgileInventorCategory" EntityType="Self.AgileInventorCategory" />
+          <EntitySet Name="AgileInventorPost" EntityType="Self.AgileInventorPost" />
+          <AssociationSet Name="FK_AgileInventorPost_AgileInventorCategory" Association="Self.FK_AgileInventorPost_AgileInventorCategory">
+            <End Role="AgileInventorCategory" EntitySet="AgileInventorCategory" />
+            <End Role="AgileInventorPost" EntitySet="AgileInventorPost" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_9D8B6E_PAGINASModelStoreContainer" CdmEntityContainer="DB_9D8B6E_PAGINASEntities">
+          <EntitySetMapping Name="AgileInventorCategory">
+            <EntityTypeMapping TypeName="DB_9D8B6E_PAGINASModel.AgileInventorCategory">
+              <MappingFragment StoreEntitySet="AgileInventorCategory">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgileInventorPost">
+            <EntityTypeMapping TypeName="DB_9D8B6E_PAGINASModel.AgileInventorPost">
+              <MappingFragment StoreEntitySet="AgileInventorPost">
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+                <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
+                <ScalarProperty Name="PostContent" ColumnName="PostContent" />
+                <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+                <ScalarProperty Name="PostStatus" ColumnName="PostStatus" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="URLImagen" ColumnName="URLImagen" />
+                <ScalarProperty Name="URLGitHub" ColumnName="URLGitHub" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

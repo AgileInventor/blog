@@ -1,0 +1,74 @@
+﻿@model Blog.Models.AgileInventorPost
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AgileInventorPost</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PostTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.URLImagen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.URLImagen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.URLGitHub)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.URLGitHub)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AgileInventorCategory.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgileInventorCategory.CategoryName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PostID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
